@@ -26,7 +26,7 @@ jobs:
           node-version: 20
 
       - name: Run SyncMyDep
-        uses: nivinvysakh/syncmydep@feature/migrate-to-typescript
+        uses: nivinvysakh/syncmydep@Improvements
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           comment-trigger: 'syncdep'
