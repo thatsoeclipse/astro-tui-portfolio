@@ -33,7 +33,7 @@ jobs:
           node-version: 20
 
       - name: Run SyncMyDep
-        uses: nivinvysakh/syncmydep@v1
+        uses: nivinvysakh/syncmydep@Improvements
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           package-manager: 'auto'
