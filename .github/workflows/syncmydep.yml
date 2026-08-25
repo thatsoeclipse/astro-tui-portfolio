@@ -1,8 +1,18 @@
-name: SyncMyDep on PR Comment
+name: Sync Dependencies & Fix Vulnerabilities
 
 on:
-  issue_comment:
-    types: [created]
+  schedule:
+    - cron: "0 8 * * 1" # Runs weekly every Monday at 08:00 UTC
+  workflow_dispatch: # Allows manual one-click trigger from GitHub Actions tab
+  push:
+    paths:
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - "yarn.lock"
+      - "bun.lock"
+      - "deno.json"
+    branches:
+      - main
 
 permissions:
   contents: write
@@ -10,8 +20,8 @@ permissions:
   issues: write
 
 jobs:
-  sync-pr-comment:
-    name: Sync Dependencies on PR Comment
+  sync-dependencies:
+    name: Sync Dependencies & Open PR
     runs-on: ubuntu-latest
 
     steps:
@@ -20,16 +30,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
       - name: Run SyncMyDep
         uses: nivinvysakh/syncmydep@Beta
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          comment-trigger: 'syncdep'
-          require-owner: 'true'
-          sync-lockfile: 'true'
-          fix-audit: 'true'
+          # Optional settings (can also be configured in .syncmydep.yml):
+          # verify-lockfile: "true"
+          # run-build: "npm run build"
+          # auto-merge: "true"
