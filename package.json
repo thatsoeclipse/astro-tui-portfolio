@@ -9,8 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.2.2",
-    "axios": "0.21.1",
+    "astro": "^7.2.4",
     "canvas-confetti": "1.9.4"
   },
   "devDependencies": {
