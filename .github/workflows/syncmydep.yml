@@ -1,40 +1,32 @@
-name: Sync Dependencies & Fix Vulnerabilities
+name: Dependency Sync Check
 
 on:
-  schedule:
-    - cron: "0 8 * * 1" # Runs weekly every Monday at 08:00 UTC
-  workflow_dispatch: # Allows manual one-click trigger from GitHub Actions tab
   push:
     paths:
-      - "package.json"
-      - "pnpm-lock.yaml"
-      - "yarn.lock"
-      - "bun.lock"
-      - "deno.json"
-    branches:
-      - main
-
-permissions:
-  contents: write
-  pull-requests: write
-  issues: write
+      - 'package.json'
+      - 'package-lock.json'
+      - 'pnpm-lock.yaml'
+      - 'yarn.lock'
+      - 'bun.lock'
+      - 'bun.lockb'
+  pull_request:
+    paths:
+      - 'package.json'
+  workflow_dispatch:
 
 jobs:
-  sync-dependencies:
-    name: Sync Dependencies & Open PR
+  verify-sync:
+    name: Run SyncMyDep
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
 
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Run SyncMyDep
+      - name: Run SyncMyDep Action
         uses: nivinvysakh/syncmydep@Beta
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          # Optional settings (can also be configured in .syncmydep.yml):
-          # verify-lockfile: "true"
-          # run-build: "npm run build"
-          # auto-merge: "true"
