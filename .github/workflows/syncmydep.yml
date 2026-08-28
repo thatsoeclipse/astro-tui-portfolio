@@ -33,7 +33,7 @@ jobs:
           token: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
 
       - name: Run SyncMyDep
-        uses: nivinvysakh/syncmydep@v1
+        uses: nivinvysakh/syncmydep@Beta
         with:
           github-token: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
           # Optional settings (can also be defined in .syncmydep.yml):
