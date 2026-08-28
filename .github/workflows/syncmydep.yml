@@ -37,3 +37,14 @@ jobs:
         with:
           github-token: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
           update-readme-badge: "true" # 👈 Enable dynamic README status badge updates
+          generate-report: "true"     # 👈 Generates interactive HTML dashboard
+          report-path: "syncmydep-report.html"
+
+      # 📊 Upload the interactive HTML report as a workflow artifact
+      - name: Upload Interactive HTML Report Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: syncmydep-report
+          path: syncmydep-report.html
+          if-no-files-found: ignore
