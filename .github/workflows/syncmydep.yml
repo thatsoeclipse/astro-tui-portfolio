@@ -36,8 +36,4 @@ jobs:
         uses: nivinvysakh/syncmydep@Beta
         with:
           github-token: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
-          # Optional settings (can also be defined in .syncmydep.yml):
-          # sync-lockfile: "true"
-          # fix-audit: "true"
-          # verify-lockfile: "true"
-          # auto-merge: "false"
+          update-readme-badge: "true" # 👈 Enable dynamic README status badge updates
