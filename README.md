@@ -1,3 +1,7 @@
+<!-- syncmydep:start -->
+<!-- syncmydep:end -->
+
+
 <div align="center">
 
 # 🖥️ Retro TUI Portfolio
