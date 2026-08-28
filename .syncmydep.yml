@@ -4,6 +4,8 @@ detect-unused-deps: true
 # 🧹 2. Automatically remove unused packages from package.json & resync lockfile
 prune-unused-deps: true # Set to true if you want SyncMyDep to delete them automatically
 
+update-readme-badge: true
+
 # 🛡️ 3. Whitelist packages you want to keep even if they are not imported in source code
 ignore-unused-packages:
   - "eslint-plugin-react"
