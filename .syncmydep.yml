@@ -20,6 +20,57 @@ direct-push: false
 risk-scoring: true
 show-changelogs: true
 
+# 🔄 Auto-Rebase & Self-Healing Conflict Resolver (Feature 4)
+# Automatically rebase and resolve merge conflicts on open SyncMyDep PRs against base-branch
+auto-rebase: true
+
+# 📊 Interactive HTML Dashboard & Report Generator (Feature 7)
+# Generates a standalone interactive visual dashboard (with search, risk gauge, & filters)
+generate-report: true
+report-path: "syncmydep-report.html"
+
+# 📦 Intelligent Dependency Grouping & Batching (Feature 1)
+# Group packages by ecosystem in PR summaries (or leave commented out to use default presets)
+group-rules:
+  - name: "TypeScript & Type Definitions"
+    patterns:
+      - "@types/*"
+      - "typescript"
+      - "ts-node"
+      - "tsx"
+  - name: "Linters & Code Formatters"
+    patterns:
+      - "eslint*"
+      - "prettier*"
+      - "@typescript-eslint/*"
+      - "stylelint*"
+      - "biome*"
+  - name: "Testing & QA Tooling"
+    patterns:
+      - "jest*"
+      - "vitest*"
+      - "@testing-library/*"
+      - "playwright*"
+      - "cypress*"
+  - name: "Frontend Frameworks & UI"
+    patterns:
+      - "react*"
+      - "@types/react*"
+      - "vue*"
+      - "@vue/*"
+      - "@angular/*"
+      - "@sveltejs/*"
+      - "astro*"
+      - "next*"
+  - name: "Build & Bundlers"
+    patterns:
+      - "vite*"
+      - "webpack*"
+      - "rollup*"
+      - "esbuild*"
+      - "tailwindcss*"
+      - "postcss*"
+
 # 🧹 Unused Dependency Scanner & Pruner
 detect-unused-deps: true
 prune-unused-deps: false # ⚠️ Set to true if you want SyncMyDep to automatically remove unused packages
