@@ -1,4 +1,5 @@
 <!-- syncmydep:start -->
+[![SyncMyDep](https://img.shields.io/badge/SyncMyDep-In%20Sync-2ea44f?logo=github-actions&logoColor=white)](https://github.com/thatsoeclipse/astro-tui-portfolio) [![Vulnerabilities](https://img.shields.io/badge/Vulnerabilities-0%20detected-brightgreen?logo=security&logoColor=white)](https://github.com/thatsoeclipse/astro-tui-portfolio) [![Package Manager](https://img.shields.io/badge/Package%20Manager-npm-CB3837?logo=npm&logoColor=white)](https://github.com/thatsoeclipse/astro-tui-portfolio)
 <!-- syncmydep:end -->
 
 
