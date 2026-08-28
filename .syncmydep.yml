@@ -1,14 +1,74 @@
-# 🔍 1. Scan & report unused packages in the PR summary (enabled by default)
+# ==============================================================================
+# 🔄 SyncMyDep Configuration (.syncmydep.yml)
+# ==============================================================================
+
+# ⚡ Package Manager ("auto" | "npm" | "pnpm" | "yarn" | "bun" | "deno")
+package-manager: "auto"
+
+# 📁 Working Directory (use "." for root or "subfolder" if manifest is inside a subdirectory)
+working-directory: "."
+
+# 🔄 Core Synchronization & Security Settings
+sync-lockfile: true
+fix-audit: true
+audit-level: "moderate"
+dedupe: true
+check-only: false
+direct-push: false
+
+# 🛡️ Breaking Change Risk & Compatibility Scoring
+risk-scoring: true
+show-changelogs: true
+
+# 🧹 Unused Dependency Scanner & Pruner
 detect-unused-deps: true
-
-# 🧹 2. Automatically remove unused packages from package.json & resync lockfile
-prune-unused-deps: true # Set to true if you want SyncMyDep to delete them automatically
-
-update-readme-badge: true
-
-# 🛡️ 3. Whitelist packages you want to keep even if they are not imported in source code
+prune-unused-deps: false # ⚠️ Set to true if you want SyncMyDep to automatically remove unused packages
 ignore-unused-packages:
-  - "eslint-plugin-react"
   - "prettier"
+  - "eslint"
   - "tailwindcss"
   - "@types/node"
+  - "typescript"
+
+# 📊 Dynamic README Status Badges
+# Auto-updates Shields.io badges inside <!-- syncmydep:start --> ... <!-- syncmydep:end -->
+update-readme-badge: true
+
+# 🌿 Custom PR Title, Branch, & Commit Conventions
+pr-branch: "bot/syncmydep-updates"
+pr-title: "🤖 [SyncMyDep] Automated Dependency Synchronization & Security Fixes"
+commit-message: "🤖 chore(deps): auto-sync lockfile and patch vulnerabilities"
+pr-draft: false
+base-branch: "main"
+
+# 🏷️ Custom PR Labels & Reviewers
+pr-labels:
+  - "dependencies"
+  - "SyncMyDep"
+  - "automated-pr"
+  - "maintenance"
+pr-assignees: []
+pr-reviewers: []
+
+# 📝 Custom PR Description Header & Footer Notes
+pr-header: |
+  > 💡 **Automated Maintenance**: This Pull Request was created by [SyncMyDep](https://github.com/nivinvysakh/syncmydep) to keep dependencies synchronized and healthy.
+
+pr-footer: |
+  > 💬 **Tip**: Maintainers can comment `syncdep` on this PR to automatically refresh and update the branch.
+
+# 🔒 Quality Gates & Auto-Merge
+comment-trigger: "syncdep"
+require-owner: true
+verify-lockfile: true
+run-build: "npm run build"
+fail-on-build-error: false
+auto-merge: false
+auto-merge-method: "squash"
+cache: true
+
+# 📦 Package Filters & Monorepo Settings
+ignore-packages: []
+monorepo:
+  root-only: false
+  ignore: []
